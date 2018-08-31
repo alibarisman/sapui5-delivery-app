@@ -82,8 +82,7 @@
 					"name": "Customer",
 					"view": "Customer",
 					"target": [
-						"Customer",
-						"Welcome"
+						"Customer"
 					]
 				},
 				{
@@ -91,8 +90,7 @@
 					"name": "Order",
 					"view": "Order",
 					"target": [
-						"Order",
-						"OrderDetail"
+						"Order"
 					]
 				},
 				{
