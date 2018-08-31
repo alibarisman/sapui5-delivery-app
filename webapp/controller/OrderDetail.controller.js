@@ -1,6 +1,8 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+    "sap/ui/Device",
+    "sap/ui/core/routing/History"
+], function (Controller, Device, History) {
 	"use strict";
 
 	return Controller.extend("App.OrderTracking.controller.OrderDetail", {
@@ -25,7 +27,15 @@ sap.ui.define([
 		},
 		
 		goBack: function() {
-			this.getOwnerComponent().getRouter().navTo("Customer");
+			//this.getOwnerComponent().getRouter().navTo("Order");
+			var oHistory, sPreviousHash;
+			oHistory = History.getInstance();
+			sPreviousHash = oHistory.getPreviousHash();
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				this.getRouter().navTo("appHome", {}, true /*no history*/);
+			}			
 		}
 
 	});
