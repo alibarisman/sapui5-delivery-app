@@ -1,0 +1,135 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "App.OrderTracking",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "App.OrderTracking.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "App.OrderTracking.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"viewType": "XML",
+				"viewPath": "App.OrderTracking.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"targetControl": "splitApp",
+				"clearTarget": false,
+				"transition": "slide"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "Customer",
+					"view": "Customer",
+					"target": [
+						"Customer",
+						"Welcome"
+					]
+				},
+				{
+					"pattern": "Customer/{custNumb}",
+					"name": "Order",
+					"view": "Order",
+					"target": [
+						"Order",
+						"OrderDetail"
+					]
+				},
+				{
+					"pattern": "Customer/{custNumb}/Order/{orderNumb}",
+					"name": "OrderDetail",
+					"view": "OrderDetail",
+					"target": [
+						"OrderDetail"
+					]
+				}
+			],
+			"targets": {
+				"Customer": {
+					"viewName": "Customer",
+					"controlAggregation": "masterPages",
+					"viewLevel": 0
+				},
+				"Order": {
+					"viewName": "Order",
+					"controlAggregation": "masterPages",
+					"viewLevel": 0
+				},
+				"OrderDetail": {
+					"viewName": "OrderDetail",
+					"controlAggregation": "detailPages",
+					"viewLevel": 1
+				},
+				"Welcome": {
+					"viewName": "Welcome",
+					"controlAggregation": "detailPages",
+					"viewLevel": 1
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

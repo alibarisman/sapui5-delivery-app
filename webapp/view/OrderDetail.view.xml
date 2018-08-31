@@ -1,0 +1,131 @@
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="App.OrderTracking.controller.OrderDetail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page
+				title="Order Detail"
+				showNavButton="{device>/isPhone}"
+				navButtonPress="goBack">
+				<content>
+					<ObjectHeader
+						title="{mock>ordername}" >
+					</ObjectHeader>
+					<IconTabBar
+						id="iconTabBar"
+						class="sapUiResponsiveContentPadding"
+						select="onTabSelect"
+						selectedKey="{view>/selectedTabKey}">
+						<items>
+							<IconTabFilter id="productsTab" icon="sap-icon://activity-items" text="Kalemler" key="Products">
+								<Table
+									id="productsTable"
+									headerText="Teslimat Kalemleri"
+									items="{mock>product}">
+									<columns>
+										<Column
+											minScreenWidth="Phone"
+											demandPopin="true"
+											hAlign="Center" >
+											<header>
+												<Label text="Malzeme No" />
+											</header>
+										</Column>
+										<Column
+											minScreenWidth="Phone"
+											demandPopin="true"
+											hAlign="Center" >
+											<header>
+												<Label text="Malzeme Adı" />
+											</header>
+										</Column>
+										<Column
+											minScreenWidth="Phone"
+											demandPopin="true"
+											hAlign="Center" >
+											<header>
+												<Label text="Malzeme Adet" />
+											</header>
+										</Column>
+									</columns>
+									<ColumnListItem
+										type="Active">
+										<cells>
+											<Text
+												text="{mock>id}"/>
+											<Text
+												text="{mock>name}"/>
+											<Text
+												text="{mock>price}"/>
+										</cells>
+									</ColumnListItem>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter id="propertiesTab" icon="sap-icon://message-information" text="Bilgiler" key="Information">
+								<f:SimpleForm
+									minWidth="1024"
+									maxContainerCols="2"
+									layout="ResponsiveGridLayout" >
+									<f:title>
+										<core:Title text="Teslimat Bilgileri" />
+									</f:title>
+									<Label text="Çıkış Noktası"/>
+									<Text text="{mock>cikisyeri}"/>
+									<Label text="Varış Noktası"/>
+									<Text text="{mock>varisyeri}"/>
+									<Label text="Ott"/>
+									<Text text="{mock>ott}"/>
+									<Label text="Emanet Durumu"/>
+									<Text text="{mock>emanetdurumu}"/>
+									<Label text="Fatura No"/>
+									<Text text="{mock>faturano}"/>
+								</f:SimpleForm>
+							</IconTabFilter>
+							<IconTabFilter id="contactTab" icon="sap-icon://email" text="İletişim-Destek" key="Contact">
+								<f:SimpleForm 
+									editable="true"
+									minWidth="1024"
+									maxContainerCols="2"
+									layout="ResponsiveGridLayout" >
+									<f:title>
+										<core:Title text="İletişim-Destek" />
+									</f:title>
+									<Label text="Konu"/>
+									<Input id="subject">
+										<layoutData>
+											<l:GridData span="L6 M8 S12" />
+										</layoutData>
+									</Input>
+									<Label text="Mesaj"/>
+									<TextArea 
+										id="email"
+										value="">
+										<layoutData>
+											<l:GridData span="L6 M8 S12" />
+										</layoutData>
+									</TextArea>
+									<Label text=""/>
+									<Button 
+										id="sendMail"
+										text="Gönder">
+										<layoutData>
+											<l:GridData span="L6 M8 S12" />
+										</layoutData>
+									</Button>
+								</f:SimpleForm>
+							</IconTabFilter>
+							<IconTabFilter id="eventTab" icon="sap-icon://list" text="Event Listesi" key="Event">
+								
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

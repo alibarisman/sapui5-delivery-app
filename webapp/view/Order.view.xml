@@ -1,0 +1,48 @@
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	controllerName="App.OrderTracking.controller.Order"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page 
+				title="Order List"
+				showNavButton= "true"
+				navButtonPress="goBack">
+				<subHeader>
+					<Toolbar
+						id="searchBar">
+						<SearchField
+							search="handleSearch"								
+							placeholder="Search Order"
+							width="100%">
+						</SearchField>
+					</Toolbar>
+				</subHeader>
+				<List
+					id="orderList"
+					items="{
+						path : 'mock>items/order'
+					}">
+					<ObjectListItem
+						title= "{mock>ordername}"
+						press="orderListItemPress"
+						type="Navigation">
+						<firstStatus>
+							<ObjectStatus
+								text="{
+									path: 'mock>status',
+									formatter: 'App.OrderTracking.util.formatter.statusText'
+								}"
+								state="{
+									path: 'mock>status',
+									formatter: 'App.OrderTracking.util.formatter.statusState'
+								}" />
+						</firstStatus>
+					</ObjectListItem>
+				</List>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
